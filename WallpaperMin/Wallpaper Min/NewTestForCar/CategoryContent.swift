@@ -29,9 +29,7 @@ struct CategoryContent: View {
                         NavigationLink(destination: DetailImageView(selectImage: image, categoryName: self.categoryName)) {
                             CategoryItem(images: image)
                         }
-                        
-                    }
-                    .frame(height: 290)
+                    }.frame(height: 290)
                 }
                 Spacer()
             }
