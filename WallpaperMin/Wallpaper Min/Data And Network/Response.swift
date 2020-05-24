@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-let response: [DataWallper] = load("data.json")
+var response: [DataWallper] = load("data.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     let data: Data

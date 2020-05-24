@@ -13,7 +13,7 @@ import UIKit
 struct NewView: View {
     
     @State var showingPaySheet = false
-        
+    
     var categoryName: [String:[DataWallper]] {
         Dictionary (
             grouping: response,
@@ -22,13 +22,13 @@ struct NewView: View {
     
     
     init() {
-            let appearance = UINavigationBarAppearance()
-            
-            UITableView.appearance().backgroundColor = .init(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
-            appearance.backgroundColor = .init(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            UINavigationBar.appearance().standardAppearance = appearance
+        let appearance = UINavigationBarAppearance()
+        
+        UITableView.appearance().backgroundColor = .init(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
+        appearance.backgroundColor = .init(red: 0.22, green: 0.22, blue: 0.22, alpha: 1)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().standardAppearance = appearance
     }
     
     var body: some View {
@@ -37,24 +37,26 @@ struct NewView: View {
                 ForEach(categoryName.keys.sorted(), id: \.self) { key in
                     CategoryContent(categoryName: key, images: self.categoryName[key]!)
                 }
-                    
                 .background(Color(red: 0.22, green: 0.22, blue: 0.22))
                 .listRowInsets(EdgeInsets())
                 .listRowBackground(Color(red: 0.22, green: 0.22, blue: 0.22))
             }
-                
+            .onAppear() {
+                let a = response.remove(at: 0)
+                response.insert(a, at: 4)
+            }
             .navigationBarTitle(Text("Minpaper"))
-            
-//            .navigationBarItems(trailing:
-//                Button {
-//                    Image("Minpaper_icon")
-//                        .resizable()
-//                        .foregroundColor(.white)
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 10, height: 10, alignment: .center)
-//                        .padding(UIScreen.main.bounds.size.width/4+30)
-//                }
-//            )
+                
+                //            .navigationBarItems(trailing:
+                //                Button {
+                //                    Image("Minpaper_icon")
+                //                        .resizable()
+                //                        .foregroundColor(.white)
+                //                        .aspectRatio(contentMode: .fit)
+                //                        .frame(width: 10, height: 10, alignment: .center)
+                //                        .padding(UIScreen.main.bounds.size.width/4+30)
+                //                }
+                //            )
                 
                 .navigationBarHidden(false)
                 
@@ -62,6 +64,7 @@ struct NewView: View {
                 //Clear Line for List!
                 .onAppear {
                     UITableView.appearance().separatorStyle = .none
+                    
             }
                 
             .navigationBarItems(trailing: Button(action: {
