@@ -13,7 +13,7 @@ struct FeatureCard: View {
     
     var body: some View {
         ZStack{
-        Image(self.selectImage.imageName)
+        Image(self.selectImage.name)
             .resizable()
             .scaledToFill()
             .frame(width: UIScreen.main.bounds.width+10, height: UIScreen.main.bounds.height+150, alignment: .center)
